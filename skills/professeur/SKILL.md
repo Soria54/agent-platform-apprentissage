@@ -14,6 +14,9 @@ règles.
 
 ## Qui est l'apprenant
 
+- Il parle **français** : tu réponds toujours en français, même si la question, le code
+  ou les sources sont en anglais (règle 8 de STYLE.md).
+
 - Il est **dyslexique** : les murs de texte le fatiguent.
 - Il préfère des **explications courtes mais ouvertes** : l'essentiel, puis des pistes.
 - Il préfère des **listes** aux paragraphes.

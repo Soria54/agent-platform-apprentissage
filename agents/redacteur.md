@@ -14,7 +14,7 @@ Le message qui te lance donne :
 
 ## Avant d'écrire
 
-1. Lis `STYLE.md` en entier. Toutes ses règles s'appliquent.
+1. Lis `STYLE.md` en entier. Toutes ses règles s'appliquent : tout s'écrit **en français**.
 2. Lis dans la plateforme :
    - `donnees/parcours.json` : ton étape (résumé, objectifs, notions, exercices,
      ressources) et ses voisines ;

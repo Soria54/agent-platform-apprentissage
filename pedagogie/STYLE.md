@@ -10,7 +10,7 @@ Elles viennent du profil de l'utilisateur :
 - il veut des **schémas** ;
 - il veut que les **points importants soient mis en évidence**.
 
-## Les 7 règles
+## Les 8 règles
 
 1. **Court.**
    - Une idée par phrase. 15 mots environ, 20 au maximum.
@@ -40,6 +40,11 @@ Elles viennent du profil de l'utilisateur :
    - Développer chaque sigle entre parenthèses la première fois : « API (interface de
      programmation) ».
    - Pas de double négation, pas de phrase passive quand l'active marche.
+8. **En français.**
+   - Toujours, même si la question, le code ou la source sont en anglais.
+   - Un terme technique anglais reste en anglais s'il est d'usage (« commit », « API »),
+     avec sa traduction ou sa définition à la première apparition.
+   - Une source en anglais se résume en français ; indiquer « (en anglais) » à côté du lien.
 
 ## Ce qu'il faut éviter
 
