@@ -1,7 +1,7 @@
 // Génération des fichiers Markdown lisibles sur GitHub à partir des données JSON.
 // Ces fichiers ne se modifient pas à la main : l'interface (app/) ou le JSON fait foi.
 import { niveauImportance } from '../src/lib/importance.js';
-import { bilanEtape } from '../src/lib/progression.js';
+import { avancementEtape, bilanEtape, pourcent } from '../src/lib/progression.js';
 
 const lib = (liste, id) => (liste ?? []).find((x) => x.id === id)?.libelle ?? id;
 const deux = (n) => String(n).padStart(2, '0');
@@ -211,6 +211,51 @@ export function markdownMetier(tout) {
   return lignes.join('\n');
 }
 
+// État de l'apprentissage, importé par CLAUDE.md : chaque session sait où j'en suis.
+// Court (moins de 40 lignes) et sans date du jour, pour que la CI puisse le comparer.
+export function markdownEtat(tout) {
+  const { parcours, dictionnaire, pratiques } = tout;
+  const coeur = parcours.etapes.filter((e) => !e.optionnel);
+  const global = coeur.reduce((s, e) => s + avancementEtape(e), 0) / (coeur.length || 1);
+  const courante = coeur.find((e) => avancementEtape(e) < 1) ?? parcours.etapes.at(-1);
+  const lignes = [
+    "# Où j'en suis",
+    '',
+    '> Généré par `npm run normaliser` depuis `donnees/`. Ne pas modifier à la main.',
+    '',
+    `- **Avancement global** : ${pourcent(global)}`,
+  ];
+  if (courante) {
+    const b = bilanEtape(courante);
+    lignes.push(
+      `- **Étape en cours** : ${deux(courante.id)} · ${courante.libelle} (${pourcent(avancementEtape(courante))})`,
+      `  - notions ${b.notions.faits}/${b.notions.total}, exercices ${b.exercices.faits}/${b.exercices.total}, ressources ${b.ressources.faits}/${b.ressources.total}`,
+    );
+    const aVoir = courante.notions.filter((n) => !n.acquise).map((n) => n.libelle);
+    if (aVoir.length) lignes.push(`  - à travailler : ${aVoir.slice(0, 6).join(' ; ')}`);
+  }
+  lignes.push('', '## Étapes', '');
+  for (const e of parcours.etapes)
+    lignes.push(
+      `- ${avancementEtape(e) === 1 ? '☑' : '☐'} ${deux(e.id)} · ${e.libelle} : ${pourcent(avancementEtape(e))}${e.optionnel ? ' (optionnelle)' : ''}`,
+    );
+  const parStatut = (id) => dictionnaire.entrees.filter((x) => x.statut === id).map((x) => x.terme);
+  const enCours = parStatut('en-cours');
+  lignes.push(
+    '',
+    '## Vocabulaire',
+    '',
+    `- **Mots acquis** : ${parStatut('acquis').length} sur ${dictionnaire.entrees.length}`,
+  );
+  if (enCours.length) lignes.push(`- **En cours** : ${enCours.slice(0, 12).join(', ')}`);
+  const appliquees = pratiques.pratiques.filter((x) => x.appliquee).map((x) => x.titre);
+  lignes.push(
+    `- **Pratiques appliquées** : ${appliquees.length} sur ${pratiques.pratiques.length}`,
+    '',
+  );
+  return lignes.join('\n');
+}
+
 // Liste [chemin relatif à la racine du dépôt, contenu] de tous les fichiers générés.
 export function fichiersMarkdown(tout) {
   return [
@@ -218,5 +263,6 @@ export function fichiersMarkdown(tout) {
     ['donnees/pratiques.md', markdownPratiques(tout.pratiques)],
     ...tout.parcours.etapes.map((e) => [`${e.dossier}/README.md`, markdownEtape(e, tout)]),
     ['metier/README.md', markdownMetier(tout)],
+    ['memoire/etat.md', markdownEtat(tout)],
   ];
 }

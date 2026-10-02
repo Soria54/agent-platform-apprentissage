@@ -25,6 +25,9 @@ avant de commencer.
   `avis`, `notes` (parcours), `statut`, `commentaire`, `vus` (dictionnaire), `appliquee`
   (pratiques).
 - Ne supprime jamais un mot ni une pratique : passe une pratique à `depassee`.
+- `memoire/apprenant.md` et `memoire/journal.md` appartiennent au professeur et à
+  l'utilisateur : lis-les pour adapter le contenu (niveau, difficultés), modifie-les seulement
+  sur demande. `memoire/etat.md` est généré.
 - Vérifie les faits (WebSearch, WebFetch) avant de les écrire. Cite la source dans les
   ressources.
 - Après toute modification de `donnees/` :
@@ -113,6 +116,9 @@ Contraste Fin.
 4. Champs inconnus du nouveau modèle (par exemple `cloud` sur une étape) : garde-les dans le
    JSON, ils ne gênent pas. Signale-les à l'utilisateur.
 5. Un `projet-fil-rouge/` ou d'autres dossiers propres au dépôt restent tels quels.
+6. Le script ajoute `memoire/` et un `CLAUDE.md` qui l'importe (ou ajoute les imports à un
+   `CLAUDE.md` existant). Remplis le « Profil » de `memoire/apprenant.md` avec ce que dit le
+   `README.md` du parcours (objectif, contexte), et montre-le à l'utilisateur.
 
 ### Après le script
 

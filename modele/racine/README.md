@@ -44,7 +44,7 @@ Avec le plugin `apprentissage` dans Claude Code :
 | Commande | Rôle |
 |---|---|
 | `/apprentissage:mettre-a-jour` | Ajouter une étape, compléter un cours, des mots, des exercices, lancer la veille, mettre l'application à niveau |
-| `/apprentissage:professeur` | Une session de professeur sur le sujet, qui connaît la plateforme |
+| `/apprentissage:professeur` | Une session de professeur sur le sujet, qui connaît la plateforme et met à jour `memoire/` |
 
 Format des données : [donnees/README.md](donnees/README.md). Style des cours :
 [_modeles/style.md](_modeles/style.md).
@@ -67,6 +67,7 @@ Hébergement, accès sécurisé et synchronisation GitHub :
 ├── donnees/          ← source de vérité (JSON) + Markdown générés
 ├── metier/           ← objectif, généré
 ├── NN-etape/         ← cours.md, README.md généré, exercices/
+├── memoire/          ← ce que le professeur sait de moi, journal, état (importés par CLAUDE.md)
 ├── veille/           ← consigne et rapports de la veille
 ├── _modeles/         ← modèles de cours et d'exercice, style.md
 ├── deploiement/      ← hébergement

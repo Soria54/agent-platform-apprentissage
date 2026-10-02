@@ -26,7 +26,7 @@ distant() {
 while true; do
   echo "[$(date -u +%FT%TZ)] synchronisation"
   # Uniquement ce que l'application écrit ; le reste (code des exercices…) n'est pas touché.
-  for chemin in donnees metier [0-9][0-9]-*/README.md; do
+  for chemin in donnees metier memoire [0-9][0-9]-*/README.md; do
     [ -e "$chemin" ] && git add -- "$chemin"
   done
   if ! git diff --cached --quiet; then

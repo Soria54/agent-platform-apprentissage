@@ -52,6 +52,11 @@ distribué par le hub **`atelier`** (dépôt `Soria54/Atelier`).
   maison (`src/lib/markdown.js`) : `==surligné==`, encadrés `> [!IMPORTANT]`, ` ```mermaid `.
 - **Mermaid** : chargé à la demande, thème construit depuis `contraste/preset.js` et les
   variables `--hl*` ; `:::important` = couleur de mise en évidence.
+- **Mémoire des plateformes** : `CLAUDE.md` importe `@memoire/apprenant.md` (tenu par
+  `/apprentissage:professeur`, au fil de la session puis au bilan) et `@memoire/etat.md`
+  (généré par `markdownEtat` dans `scripts/markdown.js`, sans date du jour pour que la CI
+  reste stable). `memoire/journal.md` n'est pas importé (il grandit). `mettre-a-niveau.mjs`
+  ajoute les imports à un ancien `CLAUDE.md`.
 - `audit.mjs` du design signale `highlight.css` (généré) et le `style` de `Progress`
   (largeur dynamique) : attendus.
 

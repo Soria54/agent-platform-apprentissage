@@ -83,8 +83,21 @@ const infra = [
 ];
 for (const chemin of infra)
   if (copierRacine(cible, chemin, { garder: !options.infra })) ajoutes.push(chemin);
-for (const chemin of ['CLAUDE.md', '.env.example', '.gitignore', 'veille', '_modeles'])
+for (const chemin of ['CLAUDE.md', '.env.example', '.gitignore', 'veille', '_modeles', 'memoire'])
   if (copierRacine(cible, chemin, { garder: true })) ajoutes.push(chemin);
+// Mémoire : un CLAUDE.md d'avant la version 0.2.0 n'importe pas encore memoire/.
+const claudeMd = join(cible, 'CLAUDE.md');
+const contenuClaude = readFileSync(claudeMd, 'utf8');
+if (!contenuClaude.includes('@memoire/')) {
+  writeFileSync(
+    claudeMd,
+    `${contenuClaude.trimEnd()}\n\n## Qui j'apprends avec toi\n\n@memoire/apprenant.md\n\n` +
+      `## Où j'en suis\n\n@memoire/etat.md\n\n` +
+      '`memoire/apprenant.md` et `memoire/journal.md` sont tenus à jour par ' +
+      '`/apprentissage:professeur` ; `memoire/etat.md` est généré par `npm run normaliser`.\n',
+  );
+  console.log('CLAUDE.md : imports de memoire/ ajoutés');
+}
 const style = join(cible, '_modeles', 'style.md');
 copyFileSync(join(pluginRoot, 'pedagogie', 'STYLE.md'), style);
 ajoutes.push('_modeles/style.md');

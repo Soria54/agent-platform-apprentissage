@@ -100,7 +100,7 @@ Sur GitHub, chaque push vérifie aussi que `npm run normaliser` ne change plus r
 | `tags` | identifiants de tags, voir le tableau ci-dessous |
 | `actualites` | nouveautés ajoutées par la veille hebdomadaire |
 | `vus` | nombre de fois où je l'ai croisée moi-même (bouton « +1 vu ») ; facultatif, 0 par défaut |
-| `source` | `manuel` ou `veille` (entrée créée par la veille) |
+| `source` | `manuel`, `veille` (créée par la veille) ou `professeur` (créée pendant une session de professeur) |
 
 ## Bonnes pratiques (pratiques.json)
 

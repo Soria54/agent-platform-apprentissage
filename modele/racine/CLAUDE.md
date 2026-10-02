@@ -2,8 +2,16 @@
 
 Plateforme d'apprentissage sur : **{{sujet}}**.
 
-Créée avec le plugin `apprentissage` (hub `atelier`). Le design vient du plugin `design`
-(style Contraste Fin, couleur `{{couleur}}`).
+Créée avec le plugin `apprentissage` (hub `atelier`). Design : plugin `design`, style
+Contraste Fin, couleur `{{couleur}}`.
+
+## Qui j'apprends avec toi
+
+@memoire/apprenant.md
+
+## Où j'en suis
+
+@memoire/etat.md
 
 ## Comment m'expliquer les choses
 
@@ -18,12 +26,23 @@ Je suis **dyslexique**. Pour toute réponse et tout contenu écrit ici :
 
 Règles complètes : [_modeles/style.md](_modeles/style.md).
 
+## La mémoire de la plateforme
+
+| Fichier | Contenu | Mis à jour par |
+|---|---|---|
+| `memoire/apprenant.md` | Mon profil, ce que je maîtrise, mes difficultés, ce qui m'aide | `/apprentissage:professeur`, en fin de session |
+| `memoire/journal.md` | Une entrée courte par session | `/apprentissage:professeur` |
+| `memoire/etat.md` | Avancement, étape en cours, vocabulaire | **Généré** par `npm run normaliser` |
+
+Dans une session sans le professeur, si j'apprends quelque chose d'important sur moi
+(difficulté, préférence), propose de l'ajouter à `memoire/apprenant.md`.
+
 ## Organisation
 
 | Chemin | Rôle |
 |---|---|
 | `donnees/*.json` | **Source de vérité** : dictionnaire, pratiques, parcours, objectif. Format : `donnees/README.md` |
-| `donnees/*.md`, `NN-etape/README.md`, `metier/README.md` | **Générés** par `npm run normaliser` : ne pas modifier à la main |
+| `donnees/*.md`, `NN-etape/README.md`, `metier/README.md`, `memoire/etat.md` | **Générés** par `npm run normaliser` : ne pas modifier à la main |
 | `NN-etape/cours.md` | Cours écrit à la main, selon `_modeles/cours.md` |
 | `NN-etape/exercices/<dossier>/enonce.md` | Énoncé d'exercice, selon `_modeles/exercice.md` |
 | `app/` | Application React 19, Vite, Tailwind v3, composants `src/components/ui` |

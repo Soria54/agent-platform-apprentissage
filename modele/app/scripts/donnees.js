@@ -84,7 +84,7 @@ function validerDictionnaire(d, idsEtapes) {
       if (!a.date || !a.titre) erreurs.push(`${ref} : actualité sans date ou sans titre`);
     if (e.vus !== undefined && !(Number.isInteger(e.vus) && e.vus >= 0))
       erreurs.push(`${ref} : « vus » doit être un entier positif ou nul`);
-    if (e.source && !['manuel', 'veille'].includes(e.source))
+    if (e.source && !['manuel', 'veille', 'professeur'].includes(e.source))
       erreurs.push(`${ref} : source inconnue « ${e.source} »`);
     for (const l of e.liens ?? []) {
       if (!ids.has(l)) erreurs.push(`${ref} : lien vers une entrée inexistante « ${l} »`);
@@ -112,7 +112,7 @@ function validerPratiques(p, idsEntrees) {
     for (const r of x.sources ?? []) if (!r.url) erreurs.push(`${ref} : source sans URL`);
     for (const h of x.historique ?? [])
       if (!h.date || !h.note) erreurs.push(`${ref} : historique sans date ou sans note`);
-    if (x.source && !['manuel', 'veille'].includes(x.source))
+    if (x.source && !['manuel', 'veille', 'professeur'].includes(x.source))
       erreurs.push(`${ref} : source inconnue « ${x.source} »`);
   }
   return erreurs;

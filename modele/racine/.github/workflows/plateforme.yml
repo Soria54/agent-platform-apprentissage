@@ -23,7 +23,7 @@ jobs:
       - name: Vérifier que les données sont normalisées et les Markdown à jour
         run: |
           npm run normaliser
-          git diff --exit-code -- ../donnees ../metier ':(glob)../[0-9][0-9]-*/README.md' || (echo "Lancer npm run normaliser dans app/ et committer le résultat" && exit 1)
+          git diff --exit-code -- ../donnees ../metier ../memoire/etat.md ':(glob)../[0-9][0-9]-*/README.md' || (echo "Lancer npm run normaliser dans app/ et committer le résultat" && exit 1)
       - name: Lint et format
         run: |
           npm run lint

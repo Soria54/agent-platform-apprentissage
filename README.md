@@ -47,6 +47,19 @@ Règles complètes : [pedagogie/STYLE.md](pedagogie/STYLE.md).
   - Option **Lecture confortable** (texte plus grand et plus espacé)
 - `donnees/` : JSON source de vérité, Markdown générés
 - `NN-etape/cours.md` et `exercices/` ; `veille/` ; Docker et hébergement
+- `CLAUDE.md` + `memoire/` : le **contexte de chaque session**
+  - `apprenant.md` : profil, acquis, difficultés, ce qui aide (tenu par le professeur)
+  - `journal.md` : une entrée par session de professeur
+  - `etat.md` : avancement, généré depuis `donnees/`
+
+```mermaid
+flowchart LR
+  P["professeur"] --> M[memoire/apprenant.md]:::important
+  D[donnees/] --> E[memoire/etat.md]
+  M --> C[CLAUDE.md]
+  E --> C
+  C --> S[Session suivante]
+```
 
 ## Organisation du dépôt
 

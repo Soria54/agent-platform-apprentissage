@@ -2,10 +2,12 @@
   "name": "apprentissage",
   "displayName": "Apprentissage",
   "description": "Crée et met à jour des plateformes d'apprentissage sur un sujet (cours, schémas, dictionnaire, exercices, suivi), avec le design Contraste Fin, et spécialise une session en professeur d'un domaine. Explications courtes, en listes, avec schémas et points importants mis en évidence.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Soria54"
   },
   "repository": "https://github.com/Soria54/agent-platform-apprentissage",
-  "dependencies": ["design"]
+  "dependencies": [
+    "design"
+  ]
 }

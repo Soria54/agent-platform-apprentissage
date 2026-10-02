@@ -88,10 +88,17 @@ Le script :
 4. **`metier.json`** : l'objectif, avec une section `competences` reliée aux étapes. Une
    section `liste` « Ce qu'il ne faut pas faire » est souvent utile.
 
+5. **`memoire/apprenant.md`** : complète le « Profil » (niveau de départ, objectif, temps
+   disponible) et « Ce qui m'aide » avec ce que l'utilisateur a dit à l'étape 1. Ce fichier
+   est importé par `CLAUDE.md` : toutes les sessions dans la plateforme le connaîtront, et
+   `/apprentissage:professeur` le tiendra à jour.
+
 Puis :
 ```bash
 cd <dossier>/app && node scripts/cli.js valider && node scripts/cli.js normaliser
 ```
+
+`normaliser` génère aussi `memoire/etat.md` (avancement), importé par `CLAUDE.md`.
 
 ## 5. Rédiger les cours et les énoncés
 
