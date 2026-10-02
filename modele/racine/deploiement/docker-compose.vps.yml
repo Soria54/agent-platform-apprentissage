@@ -1,0 +1,23 @@
+# Complément pour un serveur exposé sur Internet (VPS) : HTTPS automatique avec Caddy.
+# Prérequis : un nom de domaine (DOMAINE dans .env) qui pointe vers le serveur,
+# ports 80 et 443 ouverts, et MOT_DE_PASSE défini dans .env.
+#
+#   docker compose -f docker-compose.yml -f deploiement/docker-compose.vps.yml up -d --build
+
+services:
+  plateforme:
+    # Plus de port publié : seul Caddy est joignable depuis Internet.
+    ports: !reset []
+
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    command: caddy reverse-proxy --from ${DOMAINE:?Définir DOMAINE dans .env} --to plateforme:8080
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy-donnees:/data
+
+volumes:
+  caddy-donnees:

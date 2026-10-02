@@ -1,0 +1,20 @@
+/*
+ * Réglages propres à la plateforme d'apprentissage, sans couleur (le thème vient du preset).
+ * « Lecture confortable » : texte plus grand et plus espacé, utile en cas de dyslexie.
+ */
+.lecture-confortable body {
+  font-size: 17px;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  word-spacing: 0.12em;
+}
+
+.lecture-confortable .max-w-prose {
+  max-width: 60ch;
+}
+
+/* Les schémas Mermaid gardent leur taille naturelle et défilent s'ils sont trop larges. */
+.schema svg {
+  max-width: none;
+  height: auto;
+}

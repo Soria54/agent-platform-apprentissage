@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "types": [
+    {
+      "id": "terme",
+      "libelle": "Terme"
+    },
+    {
+      "id": "outil",
+      "libelle": "Outil"
+    },
+    {
+      "id": "thematique",
+      "libelle": "Thématique"
+    }
+  ],
+  "categories": [
+    {
+      "id": "fondamentaux",
+      "libelle": "Fondamentaux"
+    }
+  ],
+  "groupes_tags": [
+    {
+      "id": "niveau",
+      "libelle": "Niveau"
+    },
+    {
+      "id": "priorite",
+      "libelle": "Priorité"
+    },
+    {
+      "id": "nature",
+      "libelle": "Nature"
+    },
+    {
+      "id": "cycle",
+      "libelle": "Cycle de vie"
+    }
+  ],
+  "tags": [
+    {
+      "id": "base",
+      "libelle": "Base",
+      "groupe": "niveau"
+    },
+    {
+      "id": "avance",
+      "libelle": "Avancé",
+      "groupe": "niveau"
+    },
+    {
+      "id": "expert",
+      "libelle": "Expert",
+      "groupe": "niveau"
+    },
+    {
+      "id": "essentiel",
+      "libelle": "Essentiel",
+      "groupe": "priorite"
+    },
+    {
+      "id": "optionnel",
+      "libelle": "Optionnel",
+      "groupe": "priorite"
+    },
+    {
+      "id": "aller-plus-loin",
+      "libelle": "Aller plus loin",
+      "groupe": "nature"
+    },
+    {
+      "id": "autre-solution",
+      "libelle": "Autre solution",
+      "groupe": "nature"
+    },
+    {
+      "id": "emergent",
+      "libelle": "Émergent",
+      "groupe": "cycle"
+    },
+    {
+      "id": "mature",
+      "libelle": "Mature",
+      "groupe": "cycle"
+    },
+    {
+      "id": "en-declin",
+      "libelle": "En déclin",
+      "groupe": "cycle"
+    }
+  ],
+  "statuts": [
+    {
+      "id": "a-decouvrir",
+      "libelle": "À découvrir"
+    },
+    {
+      "id": "en-attente",
+      "libelle": "En attente"
+    },
+    {
+      "id": "en-cours",
+      "libelle": "En cours"
+    },
+    {
+      "id": "acquis",
+      "libelle": "Acquis"
+    },
+    {
+      "id": "pas-interesse",
+      "libelle": "Pas intéressé"
+    }
+  ],
+  "importance": {
+    "seuils": [
+      3,
+      6,
+      10
+    ],
+    "libelles": [
+      "Mentionnée",
+      "Courante",
+      "Importante",
+      "Essentielle"
+    ],
+    "tag_auto": "essentiel"
+  },
+  "entrees": []
+}

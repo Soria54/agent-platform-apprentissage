@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "types_ressources": [
+    {
+      "id": "documentation",
+      "libelle": "Documentation"
+    },
+    {
+      "id": "tutoriel",
+      "libelle": "Tutoriel"
+    },
+    {
+      "id": "cours",
+      "libelle": "Cours"
+    },
+    {
+      "id": "article",
+      "libelle": "Article"
+    },
+    {
+      "id": "video",
+      "libelle": "Vidéo"
+    },
+    {
+      "id": "depot",
+      "libelle": "Dépôt d'exemples"
+    },
+    {
+      "id": "outil",
+      "libelle": "Outil"
+    }
+  ],
+  "etapes": []
+}

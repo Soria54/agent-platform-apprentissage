@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "themes": [
+    {
+      "id": "methode",
+      "libelle": "Méthode d'apprentissage"
+    },
+    {
+      "id": "pratique",
+      "libelle": "Au quotidien"
+    },
+    {
+      "id": "erreurs",
+      "libelle": "Erreurs à éviter"
+    }
+  ],
+  "etats": [
+    {
+      "id": "recommandee",
+      "libelle": "Recommandée"
+    },
+    {
+      "id": "a-surveiller",
+      "libelle": "À surveiller"
+    },
+    {
+      "id": "depassee",
+      "libelle": "Dépassée"
+    }
+  ],
+  "pratiques": []
+}

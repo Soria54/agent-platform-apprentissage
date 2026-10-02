@@ -1,0 +1,13 @@
+# Secrets
+.env
+
+# Dépendances et builds
+node_modules/
+app/dist/
+app/captures/
+
+# Éditeurs et système
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

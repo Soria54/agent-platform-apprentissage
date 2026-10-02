@@ -1,0 +1,46 @@
+name: Plateforme
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  valider:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+      - name: Valider les données
+        run: npm run valider
+      - name: Vérifier que les données sont normalisées et les Markdown à jour
+        run: |
+          npm run normaliser
+          git diff --exit-code -- ../donnees ../metier ':(glob)../[0-9][0-9]-*/README.md' || (echo "Lancer npm run normaliser dans app/ et committer le résultat" && exit 1)
+      - name: Lint et format
+        run: |
+          npm run lint
+          npm run format:check
+      - name: Construire l'interface
+        run: npm run build
+
+  image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Construire l'image Docker
+        run: docker build -t {{name}} .
+      - name: Démarrer le conteneur et vérifier qu'il répond
+        run: |
+          docker run -d --name plateforme -p 8080:8080 -e MOT_DE_PASSE=test {{name}}
+          for i in $(seq 1 20); do curl -fs http://localhost:8080/sante && break; sleep 1; done
+          test "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/)" = 401
+          curl -fs -u moi:test http://localhost:8080/api/donnees > /dev/null
+          docker logs plateforme

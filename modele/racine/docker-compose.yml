@@ -1,0 +1,38 @@
+# Lancement : docker compose up -d --build
+# Avec synchronisation GitHub : docker compose --profile synchro up -d --build
+# Réglages dans .env (modèle : .env.example). Guide complet : deploiement/README.md
+
+services:
+  plateforme:
+    build: .
+    image: {{name}}
+    restart: unless-stopped
+    # Même utilisateur que le propriétaire du clone, pour pouvoir écrire dedans.
+    user: "${UID:-1000}:${GID:-1000}"
+    ports:
+      - "${PORT:-8080}:8080"
+    environment:
+      MOT_DE_PASSE: ${MOT_DE_PASSE:-}
+      IDENTIFIANT: ${IDENTIFIANT:-moi}
+    volumes:
+      # Le clone du dépôt lui-même : les modifications faites dans l'application
+      # arrivent dans donnees/ et dans les Markdown, prêtes à être committées.
+      - .:/depot
+
+  # Facultatif : commit + pull + push automatiques vers GitHub.
+  synchro:
+    image: alpine/git:latest
+    profiles: ["synchro"]
+    restart: unless-stopped
+    user: "${UID:-1000}:${GID:-1000}"
+    working_dir: /depot
+    entrypoint: ["/bin/sh", "/depot/deploiement/synchro-git.sh"]
+    environment:
+      HOME: /tmp
+      GIT_TOKEN: ${GIT_TOKEN:-}
+      BRANCHE: ${BRANCHE:-main}
+      INTERVALLE: ${INTERVALLE:-600}
+      GIT_AUTEUR_NOM: ${GIT_AUTEUR_NOM:-{{titre}}}
+      GIT_AUTEUR_EMAIL: ${GIT_AUTEUR_EMAIL:-plateforme@localhost}
+    volumes:
+      - .:/depot
